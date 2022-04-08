@@ -24,7 +24,7 @@ void ÑalculationNum()
 {
     struct tm buf;
     time_t Time = time(NULL);
-    const int ArraySize = 5;
+    const int ArraySize = 6;
     int Array[ArraySize][ArraySize];
     int Day = 0;
     int Modulo = 0;
@@ -32,7 +32,7 @@ void ÑalculationNum()
 
     localtime_s(&buf, &Time);
     Day = buf.tm_mday;
-    Modulo = ArraySize % Day;
+    Modulo = Day % ArraySize;
 
     for (int i = 0; i < ArraySize; i++)
     {
@@ -40,7 +40,8 @@ void ÑalculationNum()
         {
             Array[i][j] = i + j;
             std::cout << Array[i][j];
-            NumberSumm = NumberSumm + Array[Modulo][j];
+            if (i == Modulo)NumberSumm += Array[i][j];
+            //NumberSumm = NumberSumm + Array[Modulo][j];
 
         }
        
